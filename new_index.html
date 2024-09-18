@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Carousel</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- FullPage.js CSS for Vertical Carousel animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css">
+
+    <!-- FontAwesome for Chevron icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+       
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-color: white;
+            --font-family: 'Poppins', sans-serif;
+            --base-font-size: 16px;
+            --heading-font-size: 2.5rem;
+            --paragraph-font-size: 1.2rem;
+        }
+
+        /* General Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+            font-size: var(--base-font-size);
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+
+        p {
+            text-align: center;
+            margin: 0;
+            padding: 1em 2em;
+            color: var(--text-color);
+            font-size: var(--paragraph-font-size);
+        }
+
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+       
+            box-sizing: border-box;
+        }
+
+        .section:nth-child(odd):not(:first-child) {
+            background-color: var(--primary-color);
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--secondary-color);
+        }
+
+
+        #header {
+            height: 100%;
+            
+            background: url('/Assets/42B29AA2-80C6-42FD-8878-80508B1E72AF.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            flex-direction: column;
+        }
+
+        .header-content {
+            max-width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            height: clamp(5rem, 10vw, 7.5rem);
+            margin-bottom: 1.25rem;
+        }
+
+        .header-content h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .header-content p {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--text-color);
+            margin-top: 0.625rem;
+        }
+
+
+        .overlay-image {
+            position: absolute;
+            width: clamp(5rem, 8vw, 9.375rem);
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 10;
+            opacity: 0.8;
+        }
+
+       
+        .scroll-down-chevron {
+            position: absolute;
+            bottom: 20px;
+            color: var(--text-color);
+            font-size: 2.5rem;
+            cursor: pointer;
+            animation: bounce 1.5s infinite;
+            z-index: 9999; 
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(10px);
+            }
+            60% {
+                transform: translateY(5px);
+            }
+        }
+
+       
+        #about h2, #services h2, #contact h2 {
+            font-size: var(--heading-font-size);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        #about p, #services p, #contact p {
+            max-width: 50rem;
+            font-weight: 300;
+        }
+
+       
+        nav#navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 0.625rem;
+            text-align: center;
+            display: none;
+            z-index: 10;
+        }
+
+        nav#navbar ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav#navbar ul li {
+            margin: 0 1rem;
+        }
+
+        nav#navbar ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        nav#navbar ul li a:hover {
+            text-decoration: underline;
+        }
+
+       
+        .navbar-ribbon {
+            height: 2.5rem;
+            display: inline-block;
+            margin-right: 0.9375rem;
+        }
+
+       
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content p {
+                font-size: 1rem;
+            }
+
+            .logo {
+                height: 5rem;
+            }
+
+            .overlay-image {
+                width: 6.25rem;
+                top: 0.625rem;
+                right: 0.625rem;
+            }
+
+            #navbar ul li {
+                margin: 0 0.625rem;
+            }
+
+            .scroll-down-chevron {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .header-content p {
+                font-size: 0.875rem;
+            }
+
+            .logo {
+                height: 3.75rem;
+            }
+
+            .overlay-image {
+                width: 5rem;
+            }
+
+            #navbar ul {
+                flex-direction: column;
+            }
+
+            #navbar ul li {
+                margin: 0.625rem 0;
+            }
+
+            #navbar ul li a {
+                font-size: 1rem;
+            }
+
+            .scroll-down-chevron {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div id="fullpage">
+        <div class="section" id="home">
+            <header id="header">
+                <div class="header-content">
+                    <img src="/Assets/CNH CKI ECLUB LOGO.png" alt="Logo" class="logo">
+                    <h1>Welcome to My Website</h1>
+                    <p>Scroll down to move the navigation bar</p>
+                </div>
+                <img src="/Assets/giphy_2.gif" alt="Overlay" class="overlay-image">
+                <i class="fas fa-chevron-down scroll-down-chevron" id="scrollChevron"></i>
+            </header>
+        </div>
+
+
+        <div class="section" id="about">
+            <h2>About Us</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. Donec rutrum sed sem quis venenatis.</p>
+        </div>
+
+        <div class="section" id="services">
+            <h2>Our Services</h2>
+            <p>We provide world-class services to help your business grow. Our team of experts ensures you receive the best solutions tailored to your needs.</p>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or want to learn more, feel free to reach out to us via our contact page or email.</p>
+        </div>
+    </div>
+
+    <nav id="navbar">
+        <img src="/Assets/download.png" alt="navbar-ribbon" class="navbar-ribbon">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new fullpage('#fullpage', {
+                autoScrolling: true,
+                navigation: false,
+                scrollHorizontally: false,
+                afterRender: function(){
+                    const scrollChevron = document.getElementById('scrollChevron');
+                    scrollChevron.style.display = 'block';
+                },
+                onLeave: function(origin, destination, direction) {
+                    const navbar = document.getElementById('navbar');
+
+                    if (destination.index >= 1) {
+                        navbar.style.display = 'block';
+                        navbar.style.opacity = 0;
+                        setTimeout(function() {
+                            navbar.style.opacity = 1;
+                            navbar.style.transition = 'opacity 1s ease-in';
+                        }, 100);
+                    }
+
+                    if (destination.index === 0) {
+                        navbar.style.opacity = 0;
+                        navbar.style.display = 'none';
+                    }
+                }
+            });
+
+
+            const scrollChevron = document.getElementById('scrollChevron');
+            scrollChevron.addEventListener('click', function() {
+                fullpage_api.moveSectionDown();
+            });
+
+            // Attach click event listeners to navbar links
+            document.querySelectorAll('#navbar a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = this.getAttribute('href').substring(1);
+
+                    const sectionMap = {
+                        'home': 1,
+                        'about': 2,
+                        'services': 3,
+                        'contact': 4
+                    };
+
+                    fullpage_api.moveTo(sectionMap[target]);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
