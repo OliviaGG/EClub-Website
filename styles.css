@@ -47,6 +47,14 @@ nav {
   transition: all 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
+.navbar-cnh-emblem {
+  .navbar-cnh-emblem 
+    max-width: 100px;  /* or any size you prefer */
+    max-height: 100px; /* or any size you prefer */
+    width: auto;
+    height: auto;
+}
+
 /* Sticky Navbar */
 nav.sticky {
   top: 0;
@@ -62,7 +70,7 @@ nav.visible {
   display: flex;
   justify-content: space-between; /* Space between logo/title and links */
   align-items: center; /* Center items vertically */
-  height: 100%; /* Ensure full height is used */
+  height: %; /* Ensure full height is used */
   padding: 0 20px; /* Add some padding */
 }
 
@@ -71,6 +79,35 @@ nav.visible {
   display: flex;
   align-items: center; /* Center logo and title vertically */
   gap: 10px; /* Space between logo and title */
+  max-width: 50px; 
+}
+
+/* Style for the parent container */
+.navbar-images {
+  display: flex; /* Align images in a row */
+  justify-content: space-around; /* Space out the images evenly */
+  align-items: center; /* Center the images vertically */
+}
+
+/* Style for individual images */
+.navbar-ribbon, .navbar-cnh-emblem, .navbar-cki-logo {
+  max-width: 10px; /* Set a maximum width for the images */
+  height: 10px; /* Maintain the aspect ratio */
+}
+
+/* Additional styling for specific images if needed */
+.navbar-ribbon {
+  /* Additional styles for the ribbon image */
+}
+
+.navbar-cnh-emblem {
+  /* Additional styles for the CNH emblem image */
+  Width:10px;
+  Height: 10px;
+}
+
+.navbar-cki-logo {
+  /* Additional styles for the CKI logo image */
 }
 
 /* Styling the Logo */
