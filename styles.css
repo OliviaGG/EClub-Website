@@ -52,6 +52,7 @@ nav {
     max-height: 100px; /* or any size you prefer */
     width: auto;
     height: auto;
+    margin: left 10px;
 }
 
 /* Sticky Navbar */
@@ -97,18 +98,23 @@ nav.visible {
 
 /* Additional styling for specific images if needed */
 .navbar-ribbon {
+  display:flex;
+  max-width:fit-content; /*width: 200%;*/
+  order: 2;
   width: 100%;
   /* Additional styles for the ribbon image*/
 }
 
 .navbar-cnh-emblem {
   /* Additional styles for the CNH emblem image */
-  Width:10px;
-  Height: 10px;
+  width:10px;
+  display: inline;
+  height: 50px;
   left: 100px;
-}
+} 
 
 .navbar-cki-logo {
+  left:100px;
   /* Additional styles for the CKI logo image */
 }
 
